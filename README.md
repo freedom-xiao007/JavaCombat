@@ -11,6 +11,16 @@ F:.
     └─web-mvc-core 自研MVC框架核心代码
 ```
 
+## 运行说明
+运行命令如下：
+
+```shell script
+# 进入user-platform目录
+cd user-platform
+mvn clean package -U
+java -jar .\user-web\target\user-web-v1-SNAPSHOT-war-exec.jar
+```
+
 ## 相关学习记录总结
 - [Servlet/JSP基础]()
 - [如果Debug一个Tomcat程序]()
