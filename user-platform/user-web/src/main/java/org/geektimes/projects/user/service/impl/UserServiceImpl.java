@@ -31,6 +31,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean register(User user) {
+        if (user.getName().length() < 6 || user.getName().length() > 32) {
+            return false;
+        }
+        if (user.getPhoneNumber().length() != 11) {
+            return false;
+        }
         return userRepository.save(user);
     }
 

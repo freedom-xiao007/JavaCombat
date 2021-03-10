@@ -20,15 +20,15 @@ public class RegisterController implements PageController {
 
     @Override
     @POST
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         String user = request.getParameter("user");
         String password = request.getParameter("password");
-        System.out.printf("user: %s, password: %s\n", user, password);
+        String phoneNumber = request.getParameter("phone");
+        System.out.printf("user: %s, password: %s, phone: %s\n", user, password, phoneNumber);
         if (user == null || password == null) {
             return "register.jsp";
         }
-
-        if (userService.register(new User(user, password, "1", "1"))) {
+        if (userService.register(new User(user, password, "email", phoneNumber))) {
             return "login.jsp";
         }
         return "failed.jsp";
