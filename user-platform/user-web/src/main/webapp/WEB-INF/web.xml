@@ -4,6 +4,9 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
          http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          metadata-complete="true" version="2.5">
+    <listener>
+        <listener-class>org.geektimes.web.mvc.listener.ComponentContextInitializerListener</listener-class>
+    </listener>
 
     <servlet>
         <servlet-name>default</servlet-name>
