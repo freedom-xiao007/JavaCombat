@@ -4,6 +4,8 @@ import org.geektimes.projects.user.domain.User;
 import org.geektimes.projects.user.service.UserService;
 import org.geektimes.projects.user.service.impl.UserServiceImpl;
 import org.geektimes.web.mvc.controller.PageController;
+import org.geektimes.web.mvc.ioc.annotation.MyAutowired;
+import org.geektimes.web.mvc.ioc.annotation.MyComponent;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,9 +16,11 @@ import javax.ws.rs.Path;
  * 输出 “Hello,World” Controller
  */
 @Path("/register")
+@MyComponent(name = "RegisterController")
 public class RegisterController implements PageController {
 
-    private UserService userService = new UserServiceImpl();
+    @MyAutowired(name = "UserService")
+    private UserService userService;
 
     @Override
     @POST

@@ -1,5 +1,6 @@
 package org.geektimes.projects.user.repository;
 
+import org.geektimes.web.mvc.ioc.annotation.MyRepository;
 import org.geektimes.web.mvc.sql.Insert;
 import org.geektimes.web.mvc.sql.Select;
 import org.geektimes.projects.user.domain.User;
@@ -11,6 +12,7 @@ import java.util.Collection;
  *
  * @since 1.0
  */
+@MyRepository(name = "UserRepository")
 public interface UserRepository  {
 
     @Insert("insert into mvc_user (%s) values (%s)")

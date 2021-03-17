@@ -21,13 +21,17 @@ import org.geektimes.projects.user.domain.User;
 import org.geektimes.projects.user.repository.UserRepository;
 import org.geektimes.projects.user.service.UserService;
 import org.geektimes.web.mvc.dbProxy.JdkRepositoryProxy;
+import org.geektimes.web.mvc.ioc.annotation.MyAutowired;
+import org.geektimes.web.mvc.ioc.annotation.MyComponent;
 
 /**
  * @author lw1243925457
  */
+@MyComponent(name = "UserService")
 public class UserServiceImpl implements UserService {
 
-    UserRepository userRepository = JdkRepositoryProxy.create(UserRepository.class);
+    @MyAutowired(name = "UserRepository")
+    UserRepository userRepository;
 
     @Override
     public boolean register(User user) {

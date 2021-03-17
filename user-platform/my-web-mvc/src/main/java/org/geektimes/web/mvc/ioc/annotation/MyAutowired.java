@@ -15,30 +15,19 @@
  * limitations under the License.
  */
 
-package org.geektimes.web.mvc.dbProxy;
+package org.geektimes.web.mvc.ioc.annotation;
 
-import java.lang.reflect.Proxy;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * @author lw1243925457
  */
-public class JdkRepositoryProxy {
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface MyAutowired {
 
-    private static Map<String, Object> repositoryMap = new ConcurrentHashMap<>();
-
-    public static <T> T create(Class<?> clazz) {
-        // 查询是否之前生成过，存储的直接返回
-        if (!repositoryMap.containsKey(clazz.getName())) {
-            repositoryMap.put(clazz.getName(), newProxy(clazz));
-        }
-        return (T) repositoryMap.get(clazz.getName());
-    }
-
-    private static <T> T newProxy(Class<?> clazz) {
-        ClassLoader loader = JdkRepositoryProxy.class.getClassLoader();
-        Class[] classes = new Class[]{clazz};
-        return (T) Proxy.newProxyInstance(loader, classes, new RepositoryInvocationHandler());
-    }
+    String name();
 }

@@ -1,6 +1,7 @@
 package org.geektimes.projects.user.web.controller;
 
 import org.geektimes.web.mvc.controller.PageController;
+import org.geektimes.web.mvc.ioc.annotation.MyComponent;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

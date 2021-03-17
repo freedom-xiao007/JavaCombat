@@ -15,30 +15,21 @@
  * limitations under the License.
  */
 
-package org.geektimes.web.mvc.dbProxy;
+package org.geektimes.projects.user;
 
-import java.lang.reflect.Proxy;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import org.geektimes.projects.user.web.controller.LoginController;
+import org.geektimes.web.mvc.ioc.MyApplicationContext;
 
 /**
  * @author lw1243925457
  */
-public class JdkRepositoryProxy {
+public class Main {
 
-    private static Map<String, Object> repositoryMap = new ConcurrentHashMap<>();
+    public static void main(String[] args) throws Throwable {
+        MyApplicationContext app = new MyApplicationContext(Main.class);
 
-    public static <T> T create(Class<?> clazz) {
-        // 查询是否之前生成过，存储的直接返回
-        if (!repositoryMap.containsKey(clazz.getName())) {
-            repositoryMap.put(clazz.getName(), newProxy(clazz));
-        }
-        return (T) repositoryMap.get(clazz.getName());
-    }
-
-    private static <T> T newProxy(Class<?> clazz) {
-        ClassLoader loader = JdkRepositoryProxy.class.getClassLoader();
-        Class[] classes = new Class[]{clazz};
-        return (T) Proxy.newProxyInstance(loader, classes, new RepositoryInvocationHandler());
+//        LoginController controller = new LoginController();
+        LoginController controller = (LoginController) app.getBean("LoginController");
+        System.out.println(controller.execute(null, null));
     }
 }
