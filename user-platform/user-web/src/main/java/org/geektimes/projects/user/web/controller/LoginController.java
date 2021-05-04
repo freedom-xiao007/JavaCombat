@@ -24,6 +24,7 @@ public class LoginController implements PageController {
 
     @Override
     @POST
+    @Path("/user")
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Throwable {
         return String.valueOf(userService.deregister(null));
 //        if (true) {

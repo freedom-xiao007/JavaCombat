@@ -17,11 +17,13 @@
 
 package org.geektimes.web.mvc.ioc;
 
+import org.apache.catalina.LifecycleException;
 import org.geektimes.web.mvc.dbProxy.JdkRepositoryProxy;
 import org.geektimes.web.mvc.ioc.annotation.MyAutowired;
 import org.geektimes.web.mvc.ioc.annotation.MyComponent;
 import org.geektimes.web.mvc.ioc.annotation.MyRepository;
 import org.geektimes.web.mvc.log.MyLogger;
+import org.geektimes.web.mvc.run.RunTomcat;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -50,6 +52,13 @@ public class MyApplicationContext {
             injection();
             log.info("init bean end");
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
+            e.printStackTrace();
+        }
+
+        log.info("Run tomcat");
+        try {
+            new RunTomcat().run();
+        } catch (LifecycleException e) {
             e.printStackTrace();
         }
     }

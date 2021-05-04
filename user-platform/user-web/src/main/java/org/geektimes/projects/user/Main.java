@@ -29,7 +29,7 @@ public class Main {
         MyApplicationContext app = new MyApplicationContext(Main.class);
 
 //        LoginController controller = new LoginController();
-        LoginController controller = (LoginController) app.getBean("LoginController");
-        System.out.println(controller.execute(null, null));
+//        LoginController controller = (LoginController) app.getBean("LoginController");
+//        System.out.println(controller.execute(null, null));
     }
 }

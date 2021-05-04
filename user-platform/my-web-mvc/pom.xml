@@ -14,13 +14,19 @@
     <name>My Web-MVC Framework ${revision}</name>
     <packaging>jar</packaging>
 
-
     <dependencies>
         <!-- Servlet API -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- 引入Maven的Tomcat -->
+        <dependency>
+            <groupId>org.apache.tomcat.maven</groupId>
+            <artifactId>tomcat7-maven-plugin</artifactId>
+            <version>2.2</version>
         </dependency>
 
         <!-- JAX-RS API -->
